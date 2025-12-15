@@ -1,0 +1,60 @@
+.logo-name {
+    font-family: "Akaya Kanadaka", system-ui;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    background-color: #0f0f15;
+
+    a {
+        color: #f2f2f7;
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+
+    a.active {
+        color: #000;
+        background-color: #81bc1a;
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-y: auto;
+        padding: 0.7rem;
+    }
+
+    .bottom {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        background-color: #0f0f15;
+    }
+
+    .nav-link {
+        border-radius: 4px;
+        margin: 0.2rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 1.2rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #ededed;
+        }
+    }
+}
