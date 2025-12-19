@@ -8,28 +8,28 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { useChords } from "@/hooks/useChords";
+import { useGenres } from "@/hooks/useGenres";
 
 interface Props {
   value?: string;
-  onChange: (chord: string) => void;
+  onChange: (genre: string) => void;
   disabled?: boolean;
 }
 
-export const ChordSelect = ({ value, onChange, disabled }: Props) => {
-  const chords = useChords();
+export const GenreSelect = ({ value, onChange, disabled }: Props) => {
+  const genres = useGenres();
 
   return (
     <Select value={value} onValueChange={onChange} disabled={disabled}>
       <SelectTrigger className="w-50">
-        <SelectValue placeholder="Select your chord" />
+        <SelectValue placeholder="Select your genre" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Chords</SelectLabel>
-          {chords.map((chord: any) => (
-            <SelectItem key={chord} value={chord}>
-              {chord}
+          <SelectLabel>Genres</SelectLabel>
+          {genres.map((genre: any) => (
+            <SelectItem key={genre} value={genre}>
+              {genre}
             </SelectItem>
           ))}
         </SelectGroup>

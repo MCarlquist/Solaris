@@ -5,7 +5,9 @@ export function useChords() {
   const [chords, setChords] = useState<string[]>([]);
 
   useEffect(() => {
-    getChords().then(setChords);
+    getChords().then((chords) => {
+      setChords(chords);
+    });
   }, []);
 
   return chords;
