@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -13,7 +12,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { ChordSelect } from "./ui/ChordSelect";
 import "../styles/studio.scss";
 import { ButtonGroup } from "./ui/button-group";
-import { gemini } from "@/hooks/useGemini";
+import { ai } from "@/hooks/useHuggingFace";
 import { GenreSelect } from "./ui/GenreSelect";
 import { CircleXIcon } from "lucide-react";
 
@@ -41,7 +40,6 @@ export const Studio = () => {
   const onSetChord = () => {
     setSelected(true);
     setInitialChord(currentChordValue);
-    console.log(currentChordValue);
   };
 
   const changeChord = () => {
@@ -53,16 +51,15 @@ export const Studio = () => {
   const createChordProgression: SubmitHandler<IFormInput> = async (data) => {
     setLoading(true);
     setSelected(true);
-    const chordProgression = await (
-      await gemini()
-    ).chordProgression(data.initialChord, data.genre);
+    const aiInstance = await ai();
+    const chordProgression = await aiInstance.chordProgression(
+      data.initialChord,
+      data.genre,
+    );
 
     setChords(chordProgression || "");
-    const keywords = await (
-      await gemini()
-    ).keyword(data.initialChord, data.genre);
-
-    setKeyword(keywords || []);
+    const keywords = await aiInstance.keyword(data.initialChord, data.genre);
+    setKeyword(keywords);
     setLoading(false);
     reset();
   };
